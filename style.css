@@ -301,7 +301,7 @@ h6 {
 }
 
 .project1 {
-      background: url('TT.png') no-repeat 50% 50%;
+      background: url('TT.jpg') no-repeat 50% 50%;
       background-size: cover;
 }
 
@@ -319,12 +319,12 @@ h6 {
 }
 
 .project2 {
-      background: url('Wall_Defect.png') no-repeat 50% 50%;
+      background: url('Wall_Defect.jpg') no-repeat 50% 50%;
       background-size: cover;
 }
 
 .project2::after {
-      content: "ML model.";
+      content: "                   ML model.";
       font-family: "Roboto Mono";
       font-size: 36px;
       position: relative;
@@ -332,12 +332,12 @@ h6 {
       display: block;
       top: 80%;
       left: 90%;
-      right: 0;
+      right: 20;
       bottom: 0;
 }
 
 .project3 {
-      background: url(https://images.unsplash.com/photo-1482501157762-56897a411e05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat 50% 50%;
+      background: url(gun.jpg) no-repeat 50% 50%;
       background-size: cover;
 }
 
@@ -360,7 +360,7 @@ h6 {
 }
 
 .project4::after {
-      content: "EVM.";
+      content: "Gen AI.";
       font-family: "Roboto Mono";
       font-size: 36px;
       position: relative;
@@ -517,8 +517,10 @@ h6 {
 }
 
 .image {
-      background: url(https://images.unsplash.com/photo-1540885762261-a2ca01f290f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2468&q=80) no-repeat 50% 70%;
-}
+      background: url(me.jpg) no-repeat center;
+      background-size: cover; /* Ensures the image covers the entire element */
+      background-position: 50% 70%; /* Centers the image while allowing you to adjust its vertical alignment */
+    }
 
 /*--------------- contact form --------------- */
 
