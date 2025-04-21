@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cool Quiz</title>
   <style>
     * {
@@ -62,6 +62,14 @@
       background: #d0d0ff;
       transform: scale(1.05);
     }
+    .correct {
+      background-color: #4CAF50 !important;
+      color: #fff;
+    }
+    .wrong {
+      background-color: #f44336 !important;
+      color: #fff;
+    }
     .result {
       text-align: center;
       font-size: 1.5rem;
@@ -81,7 +89,7 @@
   <script>
     const questions = [
       {
-        question: "Who did Aadesh gave Rose?",
+        question: "Who did Aadesh give a rose to?",
         options: ["Riya", "Payal", "Manasi", "Srushti"],
         answer: "Srushti"
       },
@@ -91,7 +99,7 @@
         answer: "2"
       },
       {
-        question: "What is my favourite",
+        question: "What is my favourite food?",
         options: ["Amras", "Mastani", "Ice cream", "Dosa"],
         answer: "Dosa"
       }
@@ -117,19 +125,32 @@
       resultEl.style.display = "none";
     }
 
-    function checkAnswer(selected) {
-  const q = questions[currentQuestion];
-  if (q.options[selected] === q.answer) {
-    score++;
-  }
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    loadQuestion();
-  } else {
-    showResult();
-  }
-}
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = optionsEl.querySelectorAll("button");
 
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (q.options[idx] === q.answer) {
+          btn.classList.add("correct");
+        }
+      });
+
+      if (q.options[selectedIndex] !== q.answer) {
+        buttons[selectedIndex].classList.add("wrong");
+      } else {
+        score++;
+      }
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          loadQuestion();
+        } else {
+          showResult();
+        }
+      }, 1000);
+    }
 
     function showResult() {
       questionEl.style.display = "none";
