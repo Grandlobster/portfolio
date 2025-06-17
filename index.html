@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aadesh’s Terminal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Source Code Pro', monospace;
+      color: #00ffb3;
+    }
+
+    body {
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      background-size: 600% 600%;
+      animation: gradientMove 20s ease infinite;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Optional noise overlay */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .terminal {
+      backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+      width: 90%;
+      max-width: 900px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .top-bar {
+      background: #2c2c2c;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    #output {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      scrollbar-width: none;
+    }
+
+    #output::-webkit-scrollbar {
+      display: none;
+    }
+
+    .input-line {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-top: 1px solid #444;
+    }
+
+    .prompt {
+      margin-right: 0.5rem;
+      color: #00ffaa;
+    }
+
+    input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #00ffb3;
+      font: inherit;
+      width: 100%;
+    }
+
+    .cursor {
+      animation: blink 1s step-end infinite;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .terminal {
+        height: 90vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="top-bar">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+
+    <div id="output"></div>
+
+    <div class="input-line">
+      <span class="prompt">aadesh@macOS ~ %</span>
+      <input type="text" id="commandInput" autofocus autocomplete="off">
+      <span class="cursor">▊</span>
+    </div>
+  </div>
+
+  <script>
+    const output = document.getElementById("output");
+    const input = document.getElementById("commandInput");
+
+    const commands = {
+      help: `help ............ List available commands
+about ........... About me
+projects ........ What I’ve built
+contact ......... Reach me
+clear ........... Clear terminal`,
+
+      about: `I'm Aadesh Lawande, a developer & ML enthusiast.
+• Freelance web dev (₹5K/project)
+• Built a wall defect detection system (Image ML)
+• Love retro-modern design fusion.`,
+
+      projects: `📁 Terminal Portfolio (you're using it!)
+📁 ML Wall Defect Recognition
+📁 Retro UI Dashboard
+📁 Shared Scheduler (Firebase)`, 
+
+      contact: `📧 aadeshlawande22@gmail.com
+🌐 github.com/Grandlobster
+🔗 linkedin.com/in/aadesh-lawande
+📸 @sonu.lawande
+🗂️ aadeshlawande.netlify.app`
+    };
+
+    function printOutput(text) {
+      output.innerHTML += text + "\n";
+      output.scrollTop = output.scrollHeight;
+    }
+
+    function runCommand(cmd) {
+      if (cmd === "clear") {
+        output.innerHTML = "";
+      } else if (commands[cmd]) {
+        printOutput(commands[cmd]);
+      } else {
+        printOutput(`zsh: command not found: ${cmd}`);
+      }
+    }
+
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const command = input.value.trim();
+        printOutput(`aadesh@macOS ~ % ${command}`);
+        runCommand(command);
+        input.value = "";
+      }
+    });
+
+    // Boot intro
+    setTimeout(() => {
+      printOutput("🖥️  Booting Aadesh’s Portfolio Terminal...");
+      setTimeout(() => printOutput("Welcome to Terminal v1.0\nType 'help' to get started.\n"), 1000);
+    }, 300);
+  </script>
+</body>
+</html>
