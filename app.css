@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: 'VT323', monospace;
+  color: #00ff00;
+  text-shadow: 0 0 3px #00ff00;
+}
+
+.dos-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.window {
+  border: 2px solid #00ff00;
+  padding: 1rem;
+  background-color: #101010;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.titlebar {
+  background: #00ff00;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 0 5px #fff;
+}
+
+a {
+  color: #0ff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px dashed #00ff00;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
