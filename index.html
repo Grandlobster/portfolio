@@ -1,232 +1,136 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta name="author" content="harrnish">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Aadesh Lawande">
+  <title>आदेश लवांडे | प्रकल्प</title>
 
-      <title>आदेश लवांडे</title>
-
-      <!-- शैलीपत्र -->
-      <link rel="stylesheet" href="style.css">
-
-      <!-- बूटस्ट्रॅप सीडीएन -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-      <!-- गुगल फॉन्ट्स -->
-      <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
-
-      <!-- टर्मिनल इफेक्ट -->
-      <script src="t.min.js"></script>
-
-      <!-- स्क्रोल करताना अॅनिमेशनसाठी -->
-      <link rel="stylesheet" href="animate.css">
-      <script src="wow.min.js"></script>
-
+  <!-- Aesthetic Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Neue', cursive;
+      background: linear-gradient(to bottom right, #ffe4ec, #e0f7fa);
+      color: #3d155f;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    nav #brand a {
+      font-size: 1.8rem;
+      color: #7e22ce;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #5f27cd;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ff6f91;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(145deg, #e0c3fc 0%, #8ec5fc 100%);
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Baloo 2', cursive;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      text-align: center;
+      color: #6a0572;
+    }
+    .project {
+      margin: 1.5rem auto;
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: scale(1.02);
+    }
+    .footer {
+      background: #f3e8ff;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #6c3483;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-      <div class="wrapper">
+  <nav>
+    <span id="brand"><a href="#">सोनू</a></span>
+    <ul>
+      <li><a href="#">मुख्यपृष्ठ</a></li>
+      <li><a href="#">काम</a></li>
+      <li><a href="#">माझ्याबद्दल</a></li>
+      <li><a href="#">संपर्क</a></li>
+    </ul>
+  </nav>
 
-            <!--------------- नॅव्हबार येथे सुरू होते --------------->
-            <nav>
-                  <span id="brand">
-                        <a href="index.html">सोनू</a>
-                  </span>
+  <div class="hero">
+    <h1 class="animate__animated animate__fadeInDown">नमस्कार! मी आदेश लवांडे</h1>
+  </div>
 
-                  <ul id="menu">
-                        <li><a href="index.html">मुख्यपृष्ठ<span>.</span></a></li>
-                        <li><a href="work.html">काम<span>.</span></a></li>
-                        <li><a href="about.html">माझ्याबद्दल<span>.</span></a></li>
-                        <li><a href="contact.html">संपर्क<span>.</span></a></li>
-                  </ul>
+  <div class="container py-5">
+    <h2 class="section-title">✨ निवडक प्रकल्प</h2>
+    <div class="project animate__animated animate__fadeInUp" onclick="location.href='project1.html'">
+      <h4>🌟 प्रकल्प १</h4>
+      <p>वेबसाइट, डॅशबोर्ड, आणि अ‍ॅप्सचे सुंदर जग!</p>
+    </div>
+    <div class="project animate__animated animate__fadeInUp" onclick="location.href='project2.html'">
+      <h4>🧠 प्रकल्प २</h4>
+      <p>डेटा, कोड, आणि कल्पना यांचं फ्युजन!</p>
+    </div>
+    <div class="project animate__animated animate__fadeInUp" onclick="location.href='project3.html'">
+      <h4>🎮 प्रकल्प ३</h4>
+      <p>खेळ, इंटरॅक्शन आणि मजा!</p>
+    </div>
+  </div>
 
-                  <div id="toggle">
-                        <div class="span">मेनू</div>
-                  </div>
+  <div class="footer">
+    <p>🚀 काही रोचक प्रकल्प आहे का? <br>📩 aadeshlawande22@gmail.com</p>
+    <p>🌸 मला फॉलो करा: <br>
+      <a href="https://www.instagram.com/sonu.lawande/" target="_blank">Instagram</a> •
+      <a href="https://github.com/Grandlobster" target="_blank">GitHub</a> •
+      <a href="https://www.linkedin.com/in/aadesh-lawande/" target="_blank">LinkedIn</a>
+    </p>
+  </div>
 
-            </nav>
-
-            <div id="resize">
-                  <div class="close-btn">बंद</div>
-
-                  <ul id="menu">
-                        <li><a href="index.html">मुख्यपृष्ठ<span>.</span></a></li>
-                        <li><a href="work.html">काम<span>.</span></a></li>
-                        <li><a href="about.html">माझ्याबद्दल<span>.</span></a></li>
-                        <li><a href="contact.html">संपर्क<span>.</span></a></li>
-                  </ul>
-            </div>
-            <!--------------- नॅव्हबार येथे संपते --------------->
-
-
-
-            <!--------------- हिरो विभाग येथे सुरू होते --------------->
-            <div class="hero">
-                  <div class="header">
-                        <h1 class="line anim-typewriter"></h1>
-                  </div>
-            </div>
-
-            <div class="scroll-down"></div>
-            <!--------------- हिरो विभाग येथे संपते --------------->
-
-
-
-            <!--------------- प्रकल्प विभाग येथे सुरू होते --------------->
-            <div class="container-fluid">
-                  <br><br><br>
-
-                  <h6>निवडक प्रकल्प</h6>
-
-                  <div class="vertical"></div>
-                  <br>
-
-                  <div class="whitespace"></div>
-                  <div class="whitespace"></div>
-
-                  <div class="row">
-                        <div class="col-lg-8"></div>
-
-                        <div class="col-lg-4 project project1 wow fadeInUp" onclick="location.href='project.html'"></div>
-                  </div>
-
-                  <div class="whitespace"></div>
-
-                  <div class="row">
-                        <div class="col-lg-6 project project2 wow fadeInUp" onclick="location.href='project.html'"></div>
-
-                        <div class="col-lg-6"></div>
-                  </div>
-
-                  <div class="whitespace"></div>
-
-                  <div class="row">
-                        <div class="col-lg-7"></div>
-
-                        <div class="col-lg-4 project project3 wow fadeInUp" onclick="location.href='project.html'"></div>
-
-                        <div class="col-lg-1"></div>
-                  </div>
-
-                  <div class="whitespace"></div>
-
-                  <div class="row">
-                        <div class="col-lg-1"></div>
-
-                        <div class="col-lg-5 project project4 wow fadeInUp" onclick="location.href='project.html'"></div>
-
-                        <div class="col-lg-6"></div>
-                  </div>
-
-                  <div class="whitespace"></div>
-            </div>
-            <!--------------- प्रकल्प विभाग येथे संपते --------------->
-
-
-
-            <!--------------- पादलेख येथे सुरू होते --------------->
-            <div class="footer">
-                  <div class="container">
-                        <br><br>
-
-                        <div class="collab">
-                              <div class="row">
-                                    <div class="col-lg-12">
-                                          <p class="wow fadeInUp">काही रोचक प्रकल्प आहे का? मी तुम्हाला मदत करू शकतो.</p>
-                                    </div>
-                              </div>
-                        </div>
-
-                        <br>
-
-                        <div class="hr">
-                              <div class="row"></div>
-                        </div>
-
-                        <br><br>
-
-                        <div class="info">
-                              <div class="row">
-                                    <div class="col-lg-4" id="personal">
-                                          <p class="wow fadeInUp">माझ्याशी कनेक्ट व्हा</p>
-                                          <h4 class="wow fadeInUp" data-wow-delay="0.2s">ig @aadeshlawande</h4>
-                                          <br><br>
-                                    </div>
-
-                                    <div class="col-lg-4" id="media">
-                                          <p class="wow fadeInUp" data-wow-delay="0s">मला फॉलो करा</p>
-
-                                          <ul>
-                                                <li id="fb" class="wow fadeInUp" data-wow-delay="0.4s">fb</li>
-                                                <li id="ig" class="wow fadeInUp" data-wow-delay="0.6s">ig</li>
-                                                <li id="tw" class="wow fadeInUp" data-wow-delay="0.8s">tw</li>
-                                                <li id="yt" class="wow fadeInUp" data-wow-delay="1s">yt</li>
-                                          </ul>
-
-                                          <br><br>
-                                    </div>
-
-                                    <div class="col-lg-4" id="address">
-                                          <p class="wow fadeInUp" data-wow-delay="0s">हॅलो म्हणा</p>
-                                          <h4 class="wow fadeInUp" data-wow-delay="0.2s">aadeshlawande22@gmail.com</h4>
-                                          <br><br>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-            <!--------------- पादलेख येथे संपते --------------->
-
-            <br><br><br><br>
-
-      </div>
-
-      <!-- ग्रीन्सॉक सीडीएन -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
-
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-      <script type="text/javascript">
-
-      // नेव्हिगेशन येथे सुरू होते
-
-      $("#toggle").click(function() {
-            $(this).toggleClass('on');
-            $("#resize").toggleClass("active");
-      });
-
-      $("#resize ul li a").click(function() {
-            $(this).toggleClass('on');
-            $("#resize").toggleClass("active");
-      });
-
-      $(".close-btn").click(function() {
-            $(this).toggleClass('on');
-            $("#resize").toggleClass("active");
-      });
-
-      // नेव्हिगेशन येथे संपते
-
-      // नॅव्ह अॅनिमेशन
-
-      TweenMax.from("#brand", 1, {
-            delay: 0.4,
-            y: 10,
-            opacity: 0,
-            ease: Expo.easeInOut
-      })
-
-      TweenMax.staggerFrom("#menu li a", 1, {
-            delay: 0.4,
-            opacity: 0,
-            ease: Expo.easeInOut
-      }, 0.1);
-
-      // नॅव्ह अॅनिमेशन संपते
-
-      new WOW().init();
-
-      </script>
 </body>
 </html>
