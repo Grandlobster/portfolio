@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ 11:11 ✨</title>
+    <title>✨ UNDER CONSTRUCTION ✨</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         
@@ -689,6 +689,15 @@
             animation: bounce 2s ease-in-out infinite;
         }
         
+        .achievement-icon-img {
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+        }
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -858,12 +867,25 @@
         
         .footer {
             text-align: center;
-            background: #000;
-            color: #00ff00;
-            padding: 30px;
-            border: 5px solid #00ff00;
+            background: rgba(10, 10, 10, 0.95);
+            color: #ff4444;
+            padding: 40px 30px;
+            border: 3px solid #8b0000;
+            border-radius: 10px;
             margin-top: 50px;
             font-family: 'Courier New', monospace;
+            box-shadow: 0 -5px 30px rgba(139, 0, 0, 0.4);
+        }
+        
+        .footer p:first-child {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        
+        .footer p {
+            color: #999;
+            line-height: 1.8;
         }
         
         .sparkle {
@@ -1001,14 +1023,18 @@
             <h2><span class="glitter">🏆 ACHIEVEMENTS 🏆</span></h2>
             <div class="achievement-grid">
                 <div class="achievement-card">
-                    <div class="achievement-icon">👑</div>
+                    <div class="achievement-icon-img">
+                        <img src="Qiskit_badge.png" alt="Qiskit Badge" style="width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.5));">
+                    </div>
                     <h3>President of Qiskit-Fall Fest</h3>
                     <p>Leading a team of 10+ volunteers in quantum computing initiatives</p>
                 </div>
                 <div class="achievement-card">
-                    <div class="achievement-icon">🤝</div>
-                    <h3>Volunteer at Indian National Congress</h3>
-                    <p>Active community engagement and making a difference</p>
+                    <div class="achievement-icon-img">
+                         <img src="example.png" alt="Sesa" style="width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.5));">
+                        /div>
+                    <h3>Technical Head of SESA College Community</h3>
+                    <p>Driving technical excellence and innovation across the college community</p>
                 </div>
             </div>
         </div>
@@ -1054,14 +1080,14 @@
     </div>
     
     <div class="footer">
-        <p style="font-size: 1.2em; margin-bottom: 10px;">
+        <p>
             ⚡ POWERED BY DETERMINATION & COFFEE ⚡
         </p>
         <p>
-            © 2025 | Best viewed in 800x600 resolution | Made with ❤️ in Pune
+            © 2025 | AI & Data Science Portfolio | Made with ❤️ in Pune, Maharashtra
         </p>
-        <p style="margin-top: 10px;">
-            💾 Last Updated: [ALWAYS] 💾
+        <p style="margin-top: 15px; font-size: 0.9em;">
+            💾 Last Updated: November 2025 💾
         </p>
     </div>
     
