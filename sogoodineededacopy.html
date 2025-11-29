@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timetable Generation</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color: #ccc;
+    }
+
+    .classroom-title {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .slot {
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <label for="teacherSubjects">Teacher Subjects:</label>
+      <textarea id="teacherSubjects" rows="4" cols="50">Teacher A: Subject A
+Teacher B: Subject B
+Teacher C: Subject C
+Teacher D: Subject D
+Teacher E: Subject E
+Teacher F: Subject F</textarea>
+    </div>
+    <div>
+      <label for="slotsPerDay">Slots per Day:</label>
+      <input type="number" id="slotsPerDay" value="4">
+    </div>
+    <div>
+      <label for="daysPerWeek">Days per Week:</label>
+      <input type="number" id="daysPerWeek" value="5">
+    </div>
+    <div>
+      <button onclick="generateTimetable()">Generate Timetable</button>
+    </div>
+    <div id="timetableOutput"></div>
+  </div>
+
+  <script>
+    function generateTimetable() {
+      var teacherSubjectsInput = document.getElementById('teacherSubjects').value;
+      var slotsPerDay = document.getElementById('slotsPerDay').value;
+      var daysPerWeek = document.getElementById('daysPerWeek').value;
+
+      var teacherSubjects = teacherSubjectsInput.split('\n');
+      var teachers = [];
+      var subjects = [];
+
+      for (var i = 0; i < teacherSubjects.length; i++) {
+        var teacherSubject = teacherSubjects[i].trim();
+        var teacherSubjectArr = teacherSubject.split(':');
+
+        var teacher = teacherSubjectArr[0].trim();
+        var subject = teacherSubjectArr[1].trim();
+
+        teachers.push(teacher);
+        subjects.push(subject);
+      }
+
+      var timetableOutput = document.getElementById('timetableOutput');
+      timetableOutput.innerHTML = '';
+
+      for (var classroom = 1; classroom <= 3; classroom++) {
+        var timetableHtml = '<div class="classroom">';
+        timetableHtml += '<div class="classroom-title">Classroom ' + classroom + '</div>';
+
+        var timetable = generateTimetableForClassroom(teachers, subjects, slotsPerDay, daysPerWeek);
+        timetableHtml += generateTimetableHtml(timetable, slotsPerDay, daysPerWeek);
+
+        timetableHtml += '</div>';
+
+        timetableOutput.innerHTML += timetableHtml;
+      }
+
+      attachDragDropListeners();
+    }
+
+    function generateTimetableForClassroom(teachers, subjects, slotsPerDay, daysPerWeek) {
+      var populationSize = 100;
+      var generationLimit = 1000;
+
+      var population = initializePopulation(teachers, subjects, slotsPerDay, daysPerWeek, populationSize);
+
+      var generation = 1;
+      var bestFitness = -1;
+      var bestTimetable = null;
+
+      while (generation <= generationLimit && bestFitness !== 0) {
+        population = evolvePopulation(population, teachers, subjects);
+        var fittestTimetable = getFittestTimetable(population);
+
+        var fitness = getFitness(fittestTimetable);
+
+        if (fitness < bestFitness || bestFitness === -1) {
+          bestFitness = fitness;
+          bestTimetable = fittestTimetable;
+        }
+
+        generation++;
+      }
+
+      return bestTimetable;
+    }
+
+    function initializePopulation(teachers, subjects, slotsPerDay, daysPerWeek, populationSize) {
+      var population = [];
+
+      for (var i = 0; i < populationSize; i++) {
+        var timetable = generateRandomTimetable(teachers, subjects, slotsPerDay, daysPerWeek);
+        population.push(timetable);
+      }
+
+      return population;
+    }
+
+    function generateRandomTimetable(teachers, subjects, slotsPerDay, daysPerWeek) {
+      var timetable = [];
+
+      for (var i = 0; i < daysPerWeek; i++) {
+        var day = [];
+
+        for (var j = 0; j < slotsPerDay; j++) {
+          var randomIndex = Math.floor(Math.random() * teachers.length);
+          var teacher = teachers[randomIndex];
+          var subject = subjects[randomIndex];
+
+          day.push({ teacher: teacher, subject: subject });
+        }
+
+        timetable.push(day);
+      }
+
+      return timetable;
+    }
+
+    function evolvePopulation(population, teachers, subjects) {
+      var fittestOffset = 0;
+
+      var newPopulation = [];
+      var fittestTimetable = getFittestTimetable(population);
+      newPopulation.push(fittestTimetable);
+
+      for (var i = 1; i < population.length; i++) {
+        var parent1 = selectParent(population);
+        var parent2 = selectParent(population);
+
+        var child = crossover(parent1, parent2, teachers, subjects);
+        mutate(child, teachers, subjects);
+
+        newPopulation.push(child);
+      }
+
+      return newPopulation;
+    }
+
+    function selectParent(population) {
+      var tournamentSize = 5;
+      var tournament = [];
+
+      for (var i = 0; i < tournamentSize; i++) {
+        var randomIndex = Math.floor(Math.random() * population.length);
+        tournament.push(population[randomIndex]);
+      }
+
+      var fittest = getFittestTimetable(tournament);
+      return fittest;
+    }
+
+    function crossover(parent1, parent2, teachers, subjects) {
+      var child = [];
+
+      for (var i = 0; i < parent1.length; i++) {
+        var day = [];
+
+        for (var j = 0; j < parent1[i].length; j++) {
+          if (Math.random() < 0.5) {
+            var teacher = parent1[i][j].teacher;
+            var subject = parent1[i][j].subject;
+          } else {
+            var teacher = parent2[i][j].teacher;
+            var subject = parent2[i][j].subject;
+          }
+
+          day.push({ teacher: teacher, subject: subject });
+        }
+
+        child.push(day);
+      }
+
+      return child;
+    }
+
+    function mutate(timetable, teachers, subjects) {
+      for (var i = 0; i < timetable.length; i++) {
+        for (var j = 0; j < timetable[i].length; j++) {
+          if (Math.random() < 0.01) {
+            var randomIndex = Math.floor(Math.random() * teachers.length);
+            var teacher = teachers[randomIndex];
+            var subject = subjects[randomIndex];
+
+            timetable[i][j] = { teacher: teacher, subject: subject };
+          }
+        }
+      }
+    }
+
+    function getFittestTimetable(population) {
+      var fittestIndex = 0;
+      var bestFitness = getFitness(population[0]);
+
+      for (var i = 1; i < population.length; i++) {
+        var fitness = getFitness(population[i]);
+
+        if (fitness < bestFitness) {
+          bestFitness = fitness;
+          fittestIndex = i;
+        }
+      }
+
+      return population[fittestIndex];
+    }
+
+    function getFitness(timetable) {
+      var fitness = 0;
+
+      for (var i = 0; i < timetable.length; i++) {
+        var teachers = [];
+
+        for (var j = 0; j < timetable[i].length; j++) {
+          var teacher = timetable[i][j].teacher;
+
+          if (teachers.includes(teacher)) {
+            fitness++;
+          }
+
+          teachers.push(teacher);
+        }
+      }
+
+      return fitness;
+    }
+
+    function generateTimetableHtml(timetable, slotsPerDay, daysPerWeek) {
+      var html = '<table>';
+
+      // Generate table header
+      html += '<tr><th>Day/Slot</th>';
+
+      for (var slot = 1; slot <= slotsPerDay; slot++) {
+        html += '<th>Slot ' + slot + '</th>';
+      }
+
+      html += '</tr>';
+
+      // Generate table rows
+      for (var day = 0; day < daysPerWeek; day++) {
+        html += '<tr><td>Day ' + (day + 1) + '</td>';
+
+        for (var slot = 0; slot < slotsPerDay; slot++) {
+          var teacher = timetable[day][slot].teacher;
+          var subject = timetable[day][slot].subject;
+
+          html += '<td class="slot" draggable="true">' + teacher + '<br>(' + subject + ')</td>';
+        }
+
+        html += '</tr>';
+      }
+
+      html += '</table>';
+
+      return html;
+    }
+
+    function attachDragDropListeners() {
+      var slots = document.getElementsByClassName('slot');
+
+      for (var i = 0; i < slots.length; i++) {
+        slots[i].addEventListener('dragstart', handleDragStart);
+        slots[i].addEventListener('dragover', handleDragOver);
+        slots[i].addEventListener('drop', handleDrop);
+      }
+    }
+
+    function handleDragStart(event) {
+      event.dataTransfer.setData('text/plain', event.target.innerHTML);
+      event.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragOver(event) {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleDrop(event) {
+      event.preventDefault();
+      var sourceHtml = event.dataTransfer.getData('text/plain');
+      var targetHtml = event.target.innerHTML;
+
+      event.target.innerHTML = sourceHtml;
+      event.dataTransfer.setData('text/plain', targetHtml);
+    }
+  </script>
+</body>
+</html>
