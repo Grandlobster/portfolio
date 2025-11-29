@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ UNDER CONSTRUCTION ✨</title>
+    <title>✨ 11:11 ✨</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         
@@ -582,6 +582,193 @@
             z-index: 1;
         }
         
+        .project-card h3 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card p {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .experience-card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+            border: 2px solid #666;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .experience-card:hover {
+            border-color: #8b0000;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.4);
+            transform: translateX(5px);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .exp-header h3 {
+            color: #ff4444;
+            font-size: 1.4em;
+            margin: 0;
+        }
+        
+        .date-badge {
+            background: rgba(139, 0, 0, 0.3);
+            padding: 8px 15px;
+            border: 2px solid #8b0000;
+            border-radius: 5px;
+            color: #ff4444;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .role-title {
+            color: #d4d4d4;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .exp-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .exp-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #b4b4b4;
+            line-height: 1.6;
+        }
+        
+        .exp-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff0000;
+            font-size: 1.2em;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.25), rgba(0, 0, 0, 0.45));
+            border: 3px solid #8b0000;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 40px rgba(139, 0, 0, 0.6);
+            border-color: #ff0000;
+        }
+        
+        .achievement-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .achievement-card h3 {
+            color: #ff4444;
+            font-size: 1.3em;
+            margin: 15px 0;
+        }
+        
+        .achievement-card p {
+            color: #b4b4b4;
+            line-height: 1.6;
+        }
+        
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .hobby-card {
+            background: linear-gradient(135deg, rgba(50, 50, 50, 0.5), rgba(20, 20, 20, 0.7));
+            border: 2px solid #555;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hobby-card:hover {
+            border-color: #8b0000;
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(139, 0, 0, 0.4);
+        }
+        
+        .hobby-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .hobby-card h3 {
+            color: #ff4444;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        
+        .hobby-card p {
+            color: #999;
+            font-size: 0.95em;
+        }
+        
+        .contact-section {
+            text-align: center;
+        }
+        
+        .contact-intro {
+            font-size: 1.3em;
+            color: #d4d4d4;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .button-3d .btn-icon {
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
         .marquee {
             background: #000;
             color: #00ff00;
@@ -780,76 +967,89 @@
             </div>
         </div>
         
-        <div class="section gif-border">
+        <div class="section">
             <h2><span class="glitter">💼 WORK EXPERIENCE 💼</span></h2>
-            <div style="background: #ffffcc; padding: 20px; border: 4px double #000; margin: 15px 0;">
-                <h3 style="color: #ff00ff;">Shama Enterprises, Pune | Feb-March 2025</h3>
-                <p style="margin-top: 10px; font-size: 1.1em;">
-                    <strong>Administrator Internship</strong><br>
-                    ✓ Prepared Quotations and GST Billings<br>
-                    ✓ Created 3D Furniture designs on SketchUp<br>
-                    ✓ Managed company expense spreadsheets<br>
-                    ✓ Maintained enterprise database
-                </p>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <h3>🏢 Shama Enterprises, Pune</h3>
+                    <span class="date-badge">Feb-March 2025</span>
+                </div>
+                <p class="role-title">Administrator Internship</p>
+                <ul class="exp-list">
+                    <li>Prepared Quotations and GST Billings</li>
+                    <li>Created 3D Furniture designs on SketchUp</li>
+                    <li>Managed company expense spreadsheets</li>
+                    <li>Maintained enterprise database</li>
+                </ul>
             </div>
             
-            <div style="background: #ccffcc; padding: 20px; border: 4px double #000; margin: 15px 0;">
-                <h3 style="color: #00ff00;">TechSaksham Training | Feb 2025</h3>
-                <p style="margin-top: 10px; font-size: 1.1em;">
-                    ✓ Completed 40 hours of intense training<br>
-                    ✓ Mastered OpenCV, Ubuntu, Microsoft Co-pilot
-                </p>
+            <div class="experience-card">
+                <div class="exp-header">
+                    <h3>🎓 TechSaksham Training</h3>
+                    <span class="date-badge">Feb 2025</span>
+                </div>
+                <p class="role-title">40 Hours Intensive Training Program</p>
+                <ul class="exp-list">
+                    <li>Mastered OpenCV for computer vision applications</li>
+                    <li>Advanced Ubuntu system administration</li>
+                    <li>Microsoft Co-pilot AI integration</li>
+                </ul>
             </div>
         </div>
         
         <div class="section">
             <h2><span class="glitter">🏆 ACHIEVEMENTS 🏆</span></h2>
-            <div style="text-align: center; font-size: 1.3em; padding: 20px;">
-                <p style="background: linear-gradient(90deg, #ffff00, #ff00ff); padding: 20px; border: 5px solid #000; margin: 10px 0;">
-                    🎯 <strong>President of Qiskit-Fall Fest</strong><br>
-                    Managing a team of 10+ volunteers like a BOSS!
-                </p>
-                <p style="background: linear-gradient(90deg, #00ffff, #00ff00); padding: 20px; border: 5px solid #000; margin: 10px 0;">
-                    🌟 <strong>Volunteer at Indian National Congress</strong><br>
-                    Making a difference in the community!
-                </p>
-            </div>
-        </div>
-        
-        <div class="section gif-border">
-            <h2><span class="glitter">🎮 MY INTERESTS 🎮</span></h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
-                <div style="background: #ffccff; padding: 20px; border: 4px ridge #ff00ff; text-align: center;">
-                    <p style="font-size: 2em;">🧴</p>
-                    <p><strong>Skin-Care</strong></p>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">👑</div>
+                    <h3>President of Qiskit-Fall Fest</h3>
+                    <p>Leading a team of 10+ volunteers in quantum computing initiatives</p>
                 </div>
-                <div style="background: #ccffff; padding: 20px; border: 4px ridge #00ffff; text-align: center;">
-                    <p style="font-size: 2em;">👻</p>
-                    <p><strong>Horror Video-Games</strong></p>
-                </div>
-                <div style="background: #ccffcc; padding: 20px; border: 4px ridge #00ff00; text-align: center;">
-                    <p style="font-size: 2em;">🌱</p>
-                    <p><strong>Gardening</strong></p>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🤝</div>
+                    <h3>Volunteer at Indian National Congress</h3>
+                    <p>Active community engagement and making a difference</p>
                 </div>
             </div>
         </div>
         
-        <div class="section" style="text-align: center;">
+        <div class="section">
+            <h2><span class="glitter">🎮 INTERESTS & HOBBIES 🎮</span></h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-icon">🧴</div>
+                    <h3>Skin-Care</h3>
+                    <p>Maintaining that healthy glow</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">👻</div>
+                    <h3>Horror Video-Games</h3>
+                    <p>Thrilling adventures in the dark</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🌱</div>
+                    <h3>Gardening</h3>
+                    <p>Growing life, one plant at a time</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section contact-section">
             <h2><span class="glitter">📞 CONTACT ME 📞</span></h2>
-            <p style="font-size: 1.3em; margin: 20px 0;">
-                Ready to collaborate on something AWESOME?
+            <p class="contact-intro">
+                Ready to collaborate on something AWESOME? Let's build the future together!
             </p>
-            <button class="button-3d" onclick="alert('EMAIL: Coming Soon! Check back later! 🚀')">EMAIL ME</button>
-            <button class="button-3d" onclick="alert('LINKEDIN: Under Construction! 🔧')">LINKEDIN</button>
-            <button class="button-3d" onclick="alert('GITHUB: Loading... Please Wait! ⏳')">GITHUB</button>
-        </div>
-        
-        <div class="webring">
-            <h3 style="font-family: 'Press Start+2P', cursive; margin-bottom: 15px;">🔗 WEBRING 🔗</h3>
-            <p style="font-size: 1.2em;">
-                [ PREV ] [ RANDOM ] [ NEXT ]<br>
-                Join the Cool Kids Club!
-            </p>
+            <div class="contact-buttons">
+                <button class="button-3d" onclick="alert('📧 EMAIL: Coming Soon! Check back later! 🚀')">
+                    <span class="btn-icon">📧</span> EMAIL ME
+                </button>
+                <button class="button-3d" onclick="alert('💼 LINKEDIN: Under Construction! 🔧')">
+                    <span class="btn-icon">💼</span> LINKEDIN
+                </button>
+                <button class="button-3d" onclick="alert('💻 GITHUB: Loading... Please Wait! ⏳')">
+                    <span class="btn-icon">💻</span> GITHUB
+                </button>
+            </div>
         </div>
     </div>
     
