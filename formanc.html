@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Will You Be Mine?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 6s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #764ba2;
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .emoji-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin: 0 auto 25px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .question {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(118, 75, 162, 0.2);
+        }
+
+        .question h2 {
+            color: #764ba2;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .question p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            min-width: 140px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 5px 20px rgba(118, 75, 162, 0.3);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
+        }
+
+        .yes-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .no-btn {
+            background: #f5f5f5;
+            color: #888;
+            transition: all 0.2s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-btn:hover {
+            background: #ebebeb;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .message.show {
+            opacity: 1;
+        }
+
+        .message.love {
+            background: #fff3f3;
+            color: #d63447;
+        }
+
+        .message.success {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .shake {
+            animation: shake 0.3s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .bounce {
+            animation: bounce 0.5s;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 30px;
+            }
+
+            .emoji-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+
+            .question h2 {
+                font-size: 24px;
+            }
+
+            .question p {
+                font-size: 15px;
+            }
+
+            button {
+                padding: 15px 30px;
+                font-size: 16px;
+                min-width: 120px;
+            }
+
+            .button-group {
+                gap: 12px;
+            }
+        }
+
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            animation: celebrate 1s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="emoji-circle">💖</div>
+            <h1>A Special Question...</h1>
+            <p>I have something important to ask you</p>
+        </div>
+
+        <div class="question">
+            <h2>Will you be my Valentine? 🌹</h2>
+            <p>You make my heart skip a beat every single day</p>
+        </div>
+
+        <div class="button-group">
+            <button type="button" class="yes-btn" id="yesBtn">Yes! 💕</button>
+            <button type="button" class="no-btn" id="noBtn">No</button>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Floating hearts background
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = ['💕', '💖', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            document.getElementById('heartsContainer').appendChild(heart);
+
+            setTimeout(() => heart.remove(), 7000);
+        }
+
+        setInterval(createHeart, 800);
+
+        // No button functionality
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const message = document.getElementById('message');
+        const container = document.querySelector('.container');
+        let noClickCount = 0;
+
+        const noMessages = [
+            "Are you sure? 🥺",
+            "Please think again! 💔",
+            "You're breaking my heart... 😢",
+            "Give us a chance! 💝",
+            "But... but... why? 😭",
+            "I'll wait forever for you! 💕",
+            "Really? Not even a little? 🥺",
+            "My heart is shattering... 💔",
+            "Pretty please? 🙏",
+            "Fine, the No button is disappearing! 😤"
+        ];
+
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            noClickCount++;
+
+            container.classList.add('shake');
+            setTimeout(() => container.classList.remove('shake'), 300);
+
+            const messageText = noMessages[Math.min(noClickCount - 1, noMessages.length - 1)];
+            message.textContent = messageText;
+            message.className = 'message love show';
+
+            // Make No button smaller and harder to click
+            const currentNoSize = parseFloat(getComputedStyle(noBtn).fontSize);
+            const currentYesSize = parseFloat(getComputedStyle(yesBtn).fontSize);
+            
+            if (currentNoSize > 8) {
+                noBtn.style.fontSize = (currentNoSize - 2) + 'px';
+                const currentPadding = parseInt(getComputedStyle(noBtn).paddingTop);
+                noBtn.style.padding = Math.max(5, currentPadding - 2) + 'px ' + Math.max(10, parseInt(getComputedStyle(noBtn).paddingLeft) - 3) + 'px';
+            }
+
+            // Make Yes button bigger and more attractive
+            yesBtn.style.fontSize = (currentYesSize + 1) + 'px';
+            yesBtn.classList.add('bounce');
+            setTimeout(() => yesBtn.classList.remove('bounce'), 500);
+
+            // Move No button to random position on screen after 3 clicks
+            if (noClickCount > 2) {
+                const maxX = window.innerWidth - noBtn.offsetWidth - 40;
+                const maxY = window.innerHeight - noBtn.offsetHeight - 40;
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+            }
+
+            // Make No button nearly invisible after many clicks
+            if (noClickCount > 5) {
+                noBtn.style.opacity = Math.max(0.1, 1 - (noClickCount - 5) * 0.15);
+            }
+
+            // Completely hide No button after 8 clicks
+            if (noClickCount >= 8) {
+                noBtn.style.display = 'none';
+                message.textContent = "No button ran away! 😊 Only Yes remains! 💖";
+            }
+
+            setTimeout(() => {
+                if (noClickCount < 8) {
+                    message.classList.remove('show');
+                }
+            }, 2500);
+        });
+
+        // Yes button functionality
+        yesBtn.addEventListener('click', function() {
+            // Show celebration
+            const celebration = document.createElement('div');
+            celebration.className = 'celebration';
+            celebration.textContent = '🎉';
+            document.body.appendChild(celebration);
+
+            setTimeout(() => celebration.remove(), 1000);
+
+            message.textContent = '💖 YES! You just made me the happiest person alive! 💖';
+            message.className = 'message success show';
+
+            // Create burst of hearts
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 80);
+            }
+
+            // Hide buttons
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+
+            // Show final romantic message
+            setTimeout(() => {
+                const question = document.querySelector('.question');
+                question.innerHTML = '<h2>💕 We\'re Together Now! 💕</h2><p>This is the beginning of something beautiful</p>';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
